@@ -1,0 +1,11 @@
+header {
+   height: 60px;
+   background-color: rgb(239, 247, 255);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   outline: 2px solid black;
+	& > h3 {
+		font-weight: normal;
+	}
+}
