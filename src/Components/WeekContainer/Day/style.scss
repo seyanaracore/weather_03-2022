@@ -1,0 +1,24 @@
+.card {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   max-width: 500px;
+   margin: 10px 10px 0 0;
+   padding: 5px;
+   border: 1px solid black;
+   border-radius: 5px;
+}
+.forecast-periods-block {
+   display: flex;
+   flex-direction: column;
+   button {
+      background: none;
+      display: flex;
+      width: fit-content;
+      border: 1px solid black;
+      outline: none;
+      &:not(:last-child) {
+         margin-bottom: 2px;
+      }
+   }
+}

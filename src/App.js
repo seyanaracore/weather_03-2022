@@ -4,43 +4,48 @@ import WeekContainer from "./Components/WeekContainer/WeekContainer";
 import React, { useEffect, useState } from "react";
 import { getForecast } from "./Components/Service/OpenWeather";
 
-const forecastsPerDay = 8;
+const forecastsPerDayCount = 8;
 
 function App() {
    const [weekForecast, setWeekForecast] = useState(null);
    const [error, setError] = useState(null);
 
-   useEffect(() => {
-      getForecast()
-         .then((forecast) => {
-            console.log(forecast);
-            const forecastForDays = [];
+   const fetchData = async () => {
+      try {
+         const forecast = await getForecast();
 
-            forecast.list.forEach((el, idx) => {
-              console.log(el)
-               if ((idx + 1) / forecastsPerDay % 1 === 0) {
-                  forecastForDays[Math.ceil(idx / forecastsPerDay)] = [];
-               }
+         const forecastsPerDay = [];
 
-              //  forecastForDays[Math.ceil(idx / forecastsPerDay)].push(el);
-            });
+         forecast.list.forEach((el, idx) => {
+            const day = parseInt(idx / forecastsPerDayCount);
 
-            console.log(forecastForDays)
-
-            forecast.list = forecastForDays;
-
-
-            setWeekForecast(forecast);
-         })
-         .catch((e) => {
-            setError(e.message);
+            if ((idx / forecastsPerDayCount) % 1 === 0) {
+               forecastsPerDay[day] = [];
+            }
+            forecastsPerDay[day].push(el);
          });
+
+         forecast.list = forecastsPerDay;
+         console.log(forecast);
+
+         setWeekForecast(forecast);
+      } catch (e) {
+         setError(e.message);
+         return;
+      }
+   };
+
+   useEffect(() => {
+      fetchData();
    }, []);
 
    return (
       <div className="App">
-         <Header daysCount={weekForecast?.cnt / 5} />
-         <WeekContainer weekForecast={weekForecast} />
+         <div className="wrapper">
+            <Header daysCount={weekForecast?.cnt / forecastsPerDayCount} />
+            <SearchCity city={weekForecast?.city?.name} />
+            <WeekContainer weekForecast={weekForecast} />
+         </div>
       </div>
    );
 }
