@@ -2,7 +2,8 @@ import "./App.css";
 import Header from "./Components/Header/Header";
 import WeekContainer from "./Components/WeekContainer/WeekContainer";
 import React, { useEffect, useState } from "react";
-import { getForecast } from "./Components/Service/OpenWeather";
+import { getForecast } from "./Service/OpenWeather";
+import SearchCity from "./Components/WeekContainer/SearchCity/SearchCity";
 
 const forecastsPerDayCount = 8;
 
