@@ -8,7 +8,7 @@ class Api {
 
          return response;
       } catch (error) {
-         throw new Error(error.message);
+         throw (error);
       }
    }
 

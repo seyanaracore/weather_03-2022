@@ -3,13 +3,15 @@
    align-items: center;
    background-color: white;
    flex-direction: column;
+   padding: 20px;
+   margin-top: 10px;
 }
 .forecast-block {
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
    width: 100%;
-	& > * {
-		height: min-content;
-	}
+   & > * {
+      height: min-content;
+   }
 }

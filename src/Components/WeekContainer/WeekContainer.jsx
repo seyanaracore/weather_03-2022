@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Day from "./Day/Day";
 import "./style.scss";
 
 function WeekContainer({ weekForecast }) {
+   const [daysList, setDaysList] = useState([]);
+
+   useEffect(() => {
+      weekForecast && setDaysList(weekForecast);
+   }, [weekForecast]);
+
    return (
       <>
          <div className="week-container">
-            {/* <h4>
-               Город: <span>{weekForecast?.city?.name}</span>
-            </h4> */}
             <div className="forecast-block">
-               {weekForecast?.list.map((day, idx) => {
-                  return <Day day={day} key={idx} />;
+               {daysList?.list?.map((dayPeriods, idx) => {
+                  return <Day dayPeriods={dayPeriods} key={idx} />;
                })}
             </div>
          </div>

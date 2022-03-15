@@ -1,12 +1,14 @@
 .card {
-   display: flex;
-   flex-direction: column;
-   width: 100%;
-   max-width: 500px;
-   margin: 10px 10px 0 0;
-   padding: 5px;
-   border: 1px solid black;
-   border-radius: 5px;
+   // display: flex;
+   // flex-direction: column;
+   // width: 100%;
+   max-width: 300px !important;
+   min-width: 200px !important;
+   // margin: 10px 10px 0 0;
+   // padding: 5px;
+   // border: 1px solid black;
+   // border-radius: 5px;
+   margin: 8px;
 }
 .forecast-periods-block {
    display: flex;
@@ -20,5 +22,14 @@
       &:not(:last-child) {
          margin-bottom: 2px;
       }
+   }
+}
+.day-periods-container {
+   flex-wrap: wrap;
+   justify-content: center;
+   & button.MuiButton-root {
+      margin-left: 0;
+      margin-bottom: 2px;
+      margin-right: 2px;
    }
 }

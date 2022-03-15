@@ -1,10 +1,9 @@
 .App {
    height: 100%;
-	background-color: rgba(240, 248, 255, 0.568);
+   background-color: rgba(240, 248, 255, 0.568);
 }
 .wrapper {
-   width: 100%;
-   padding: 0 15px;
-   max-width: 1200px;
+   width: calc(100% - 15px);
+   max-width: 1000px;
    margin: auto auto;
 }

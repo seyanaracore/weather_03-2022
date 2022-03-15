@@ -1,6 +1,9 @@
-import { FETCH_API } from "../Utils/constants";
+import { getFetchApi } from "../Utils/constants";
 import Api from "./Client";
 
-export const getForecast = async () => {
-   return await Api.get(FETCH_API);
+export const getForecast = async (city) => {
+   if (!city) return;
+
+   const api = getFetchApi(city);
+   return await Api.get(api);
 };
